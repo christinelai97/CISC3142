@@ -1,0 +1,39 @@
+SKU	Brand	Category	Year	Price
+111	ABC	   A				2000	0.5
+112	ABC	   B				2010	0.5
+113	ABC	   C				2020	0.5
+211	ABC	   A				2000	1.5
+212	ABC	   B				2010	1.5
+213	ABC	   C				2020	1.5
+321	XYZ	   A				2020	1
+322	XYZ	   A				2020	2
+323	XYZ	   A				2020	3
+114	DEF	   B				2014	3.5
+115	GHI	   C				2020	2.6
+116	DEF	   A				2018	3.5
+324	HIJ	   B				2022	1
+325	GHI	   C				2014	2.6
+214	HIJ	   A				2018	1
+214		   				2018	1
+
+Brand	Average
+		1
+ABC		1
+DEF		3.5
+GHI		2.6
+HIJ		1
+XYZ		2
+
+Category	Average
+					1
+A					1.78571
+B					1.625
+C					1.8
+
+Year	SKU's
+2000	111 211 | Total: 2
+2010	112 212 | Total: 2
+2014	114 325 | Total: 2
+2018	116 214 214 | Total: 3
+2020	113 213 321 322 323 115 | Total: 6
+2022	324 | Total: 1
