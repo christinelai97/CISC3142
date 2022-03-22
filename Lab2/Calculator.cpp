@@ -115,7 +115,7 @@ int main() {
 
       //User inputs the first number
       cout << "\nEnter a calculation: [eg. Addition: 4 + 3, Sqrt: 9$, Exponent: 5^2 ]\n";
-      cout << "Choose an Operation: [Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^' Sqrt '$', ]\n";
+      cout << "Choose an Operation: [Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^', Sqrt '$']\n";
       cin >> a >> char_Operator;
 
       //User Inputs the designated operation symbol
@@ -168,7 +168,7 @@ int main() {
 
       for (int i=numOfOperations-1; i > 0; i--) {
         cout << "\nChoose an Operation followed by a number:\n"
-        <<"[Add '+', Subtract '-', Multiply '*', Divide '/', Sqrt '$']\n"
+        <<"[Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^', Sqrt '$']\n"
         << "Number of Operations left: " << i << "\n"
         << currentResult << " ";
         cin >> char_Operator;
