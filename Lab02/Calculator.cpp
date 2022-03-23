@@ -8,6 +8,8 @@ char symbols for the available operations.
 The user may choose between a single operation, or to input multiple operations
 
 Available operations are: Addition, Subtraction, Multiplication, Division, Square root, Exponents
+
+Makefile available in root directory
 */
 
 #include <iostream>
