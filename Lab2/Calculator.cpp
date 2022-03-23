@@ -1,45 +1,63 @@
+/*Christine Lai
+This program creates a user-defined calculator struct with an Operator enum,
+and uses a switch statement to perform the designated operation chosen by the user.
+
+The user inputs a linear calculation such as: a + b, 5 * 5, etc. using designated
+char symbols for the available operations.
+
+The user may choose between a single operation, or to input multiple operations
+
+Available operations are: Addition, Subtraction, Multiplication, Division, Square root, Exponents
+*/
+
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-double a;
-double b;
-double answer;
+//input variables
+float a;
+float b;
+float answer;
 char char_Operator;
 
+//enum for available operations
 enum class Operation { Add, Subtract, Multiply, Divide, Exponent, Sqrt, Invalid };
 
+//struc for Calculator
 struct Calculator {
 
     Operation op;
 
+    //takes user's selected operation and sets to local variable in Calculator struct
     Calculator(Operation operation) {
       op = operation;
     }
 
-    int calc(double a, double b) {
+    //takes in user's entry and performs selected operation
+    float calc(float a, float b) {
         switch (op) {
-            case Operation::Add: {
+            case Operation::Add: { //Operation for Addition
                 return a + b;
             } break;
-            case Operation::Subtract: {
+            case Operation::Subtract: { //Operation for Subtraction
                 return a - b;
             } break;
-            case Operation::Multiply: {
+            case Operation::Multiply: { //Operation for Multiplication
                 return a * b;
             } break;
-            case Operation::Divide: {
+            case Operation::Divide: { //Operation for Division
                 return a / b;
             } break;
-            case Operation::Sqrt: {
+            case Operation::Sqrt: { //Operation for Square Root
                 return sqrt(a)+b;
             } break;
-            case Operation::Exponent: {
+            case Operation::Exponent: { //Operation for Exponents
                 return pow(a, b);
             } break;
-            case Operation::Invalid: {
-                cout << "Error: invalid operation!\n";
-                return 0;
+            case Operation::Invalid: { //Invalid Opertion returns first input
+                cout << "\nError: Invalid operation!\n";
+                cout << "Returning initial input..\n";
+                return a;
             }
         }
     }
@@ -47,28 +65,45 @@ struct Calculator {
 
 int main() {
 
+    //Variable for number of operations to be performed
     int numOfOperations;
 
+    //Asks user's input for number of operations to be performs
     cout << "How many Operations would you like to perform?\n";
     cin >> numOfOperations;
+
+    //If user enters an invalid input
+    if (cin.fail()) {
+      cout << "\nError: User's input is Invalid.";
+      return -1;
+    }
 
     //For single operations
     if (numOfOperations == 1) {
 
-      //cout << "Please provide an integer.\n";
-      //cin >> a;
-      cout << "\nEnter a calculation: [eg. Addition: 4 + 3, Sqrt: 9$, Exponent: 5^2 ]\n";
-      cout << "Choose an Operation: [Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^' Sqrt '$', ]\n";
+      //Asks user to enter a calculation according to the format:
+      //presents available operations
+      cout << "\nEnter a Calculation: [eg. Add: 4 + 3, Square Root: 9$, Exponent: 5^2 ]\n";
+      cout << "Available Operations are listed below:\n"
+      << "----------------------------------------------------------------------------\n"
+      << "Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^' Sqare Root '$'\n"
+      << "----------------------------------------------------------------------------\n";
       cin >> a >> char_Operator;
+      //If user inputs invalid Number
+      if (cin.fail()) {
+        cout << "\nError: User's input is invalid.";
+        return -1;
+      }
 
-      //User Inputs the designated operation symbol
-
-      //cin >> char_Operator;
-
-      //User Inputs second number if Square Root is not chosen
+      //Allows user to input a second number if Square Root is not selected
       if (char_Operator != '$') {
-        //cout << "Please provide another integer.\n";
+
         cin >> b;
+
+        if (cin.fail()) {
+          cout << "\nError: User's input is Invalid.";
+          return -1;
+        }
       }
 
       //If Square root operation chosen, second input is assigned 0
@@ -76,7 +111,7 @@ int main() {
         b = 0;
       }
 
-      //null Operation
+      //initialize variable op to allow char conversion
       Operation op{};
 
       //converts char to designated Operation in enum
@@ -113,19 +148,31 @@ int main() {
     //For multiple operations
     else if (numOfOperations>=2) {
 
-      //User inputs the first number
-      cout << "\nEnter a calculation: [eg. Addition: 4 + 3, Sqrt: 9$, Exponent: 5^2 ]\n";
-      cout << "Choose an Operation: [Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^', Sqrt '$']\n";
+      //Asks user to enter a calculation according to the format:
+      //presents available operations
+      cout << "\nEnter a Calculation: [eg. Add: 4 + 3, Square Root: 9$, Exponent: 5^2 ]\n";
+      cout << "Available Operations are listed below:\n"
+      << "-----------------------------------------------------------------------------\n"
+      << "Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^' Square Root '$'\n"
+      << "-----------------------------------------------------------------------------\n";
       cin >> a >> char_Operator;
 
-      //User Inputs the designated operation symbol
+      if (cin.fail()) {
+        cout << "\nError: User's input is Invalid.";
+        return -1;
+      }
 
-      //cin >> char_Operator;
 
-      //User Inputs second number if Square Root is not chosen
+      //Allows user to input a second number if Square Root is not selected
       if (char_Operator != '$') {
-        //cout << "Please provide another integer.\n";
+
         cin >> b;
+
+        if (cin.fail()) {
+          cout << "\nError: User's input is Invalid.";
+          return -1;
+        }
+
       }
 
       //If Square root operation chosen, second input is assigned 0
@@ -133,7 +180,7 @@ int main() {
         b = 0;
       }
 
-      //null Operation
+      //initializes variable op to allow char conversion
       Operation op{};
 
       //converts char to designated Operation in enum
@@ -159,24 +206,42 @@ int main() {
         op = Operation::Invalid;
       }
 
-      Calculator input = Calculator(op);
+      //Creates Calculator struc with user's selected operation
+      Calculator user_operation = Calculator(op);
 
-      answer = input.calc(a, b);
-      double currentResult = answer;
+      answer = user_operation.calc(a, b);
 
+      //current result is set to answer
+      float currentResult = answer;
+
+      //prints out the current answer
       cout << "\nThe current answer is: " << answer << "\n";
 
+      //iterates until number of operations left is 0
       for (int i=numOfOperations-1; i > 0; i--) {
-        cout << "\nChoose an Operation followed by a number:\n"
-        <<"[Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^', Sqrt '$']\n"
+        cout << "\nEnter an Operation followed by a number:\n"
+        <<"------------------------------------------------------------------------------\n"
+        <<"Add '+', Subtract '-', Multiply '*', Divide '/', Exponent '^', Square Root '$'\n"
+        <<"------------------------------------------------------------------------------\n"
         << "Number of Operations left: " << i << "\n"
         << currentResult << " ";
         cin >> char_Operator;
 
-        //User Inputs second number if Square Root is not chosen
+        if (cin.fail()) {
+          cout << "\nUser's input is Invalid input!";
+          return -1;
+        }
+
+        //Allows user to input second number is Square root is not chosen
         if (char_Operator != '$') {
-          //cout << "\nEnter a second number:\n";
+
           cin >> b;
+
+          if (cin.fail()) {
+            cout << "\nUser's input is Invalid input!";
+            return -1;
+          }
+
         }
 
         //If Square root operation chosen, second input is assigned 0
@@ -184,7 +249,7 @@ int main() {
           b = 0;
         }
 
-        //null Operation
+        //initializes op so that char symbols can be converted to designated operations
         Operation op{};
 
         //converts char to designated Operation in enum
@@ -210,14 +275,17 @@ int main() {
           op = Operation::Invalid;
         }
 
-        Calculator input = Calculator(op);
+        //
+        Calculator user_operation = Calculator(op);
 
-        answer = input.calc(currentResult, b);
+        answer = user_operation.calc(currentResult, b);
         currentResult = answer;
 
+        //prints out final answer if its the last number of operations
         if (i == 1) {
           cout << "\nThe final answer is " << answer << "\n";
         }
+        //prints out current answer if there are still more operations
         else {
           cout << "\nThe current answer is " << answer << "\n";
         }
