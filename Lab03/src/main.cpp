@@ -28,7 +28,7 @@ int main () {
     printCoursePassRate(&coursePassingRate);
     printCourseWithdrawalRate(&courseWithdrawalRate);
     printTermComparison(&termComparison);
-
+	cout << "Report successfully generated in output folder!" << endl;
 
 
     return 0;
