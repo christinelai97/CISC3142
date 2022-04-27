@@ -1,0 +1,6 @@
+Course Withdrawal Rate: 
+
+Instructor ID:    Withdrawal Count / (Total):          Pass Rate:
+1115                  760          /  2916               26.06 % 
+3115                  176          /  1280               13.75 % 
+3130                   97          /   997                9.73 % 

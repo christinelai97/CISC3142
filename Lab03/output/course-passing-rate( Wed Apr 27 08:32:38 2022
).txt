@@ -1,0 +1,6 @@
+Course Passing Rate: 
+
+Instructor ID:       Passing Count / (Total):          Pass Rate:
+1115                 1608          /  2916               55.14 % 
+3115                  997          /  1280               77.89 % 
+3130                  822          /   997               82.45 % 

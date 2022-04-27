@@ -1,0 +1,5 @@
+Spring vs Fall Semester: 
+
+Term:       Passing Count / (Total):          Pass Rate:
+Fall          1810          /  2671               67.76 % 
+Spring          1617          /  2522               64.12 % 
